@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos - Clarisse 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="bg-image bg-1"></div>
+        <div class="bg-image bg-2"></div>
+        <div class="bg-image bg-3"></div>
+        <div class="overlay"></div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">💕 Clarisse</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="favoritos.html" class="nav-link active">Favoritos</a>
+                <a href="galeria.html" class="nav-link">Galeria</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-container">
+            <header class="page-header">
+                <h1>⭐ Mensagens Favoritas de Clarisse</h1>
+                <p class="subtitle">Suas mensagens especiais salvas</p>
+            </header>
+
+            <div class="favorites-container">
+                <div id="favoritesList" class="favorites-list">
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">💝</div>
+                        <h2>Nenhum favorito ainda</h2>
+                        <p>Comece a marcar suas mensagens favoritas na página inicial!</p>
+                        <a href="index.html" class="cta-button">Ver Mensagens</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-particles" id="floatingParticles"></div>
+    <script src="background.js"></script>
+    <script src="messages.js"></script>
+    <script>
+        // Cria partículas flutuantes
+        function createFloatingParticles() {
+            const floatingParticles = document.getElementById('floatingParticles');
+            const emojis = ['💕', '✨', '🌸', '💖', '⭐', '🌟', '💫', '🦄', '💐', '🎀'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                    floatingParticles.appendChild(particle);
+                }, i * 1000);
+            }
+        }
+
+        // Carrega favoritos
+        function loadFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const favoritesList = document.getElementById('favoritesList');
+            const emptyState = document.getElementById('emptyState');
+
+            if (favorites.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            favoritesList.innerHTML = '';
+
+            favorites.forEach((index, idx) => {
+                const message = allMessages[index];
+                const favoriteCard = document.createElement('div');
+                favoriteCard.className = 'favorite-card';
+                favoriteCard.innerHTML = `
+                    <div class="favorite-number">#${idx + 1}</div>
+                    <div class="favorite-message">${message}</div>
+                    <div class="favorite-actions">
+                        <button class="view-button" onclick="window.location.href='index.html#${index}'">Ver</button>
+                        <button class="remove-button" onclick="removeFavorite(${index})">Remover</button>
+                    </div>
+                `;
+                favoritesList.appendChild(favoriteCard);
+            });
+        }
+
+        function removeFavorite(index) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites = favorites.filter(fav => fav !== index);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            loadFavorites();
+        }
+
+        // Inicializa
+        createFloatingParticles();
+        loadFavorites();
+    </script>
+</body>
+</html>
+

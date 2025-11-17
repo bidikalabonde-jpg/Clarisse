@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarisse 💕 - Mensagens Fofas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="bg-image bg-1"></div>
+        <div class="bg-image bg-2"></div>
+        <div class="bg-image bg-3"></div>
+        <div class="overlay"></div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">💕 Clarisse</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Início</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="favoritos.html" class="nav-link">Favoritos</a>
+                <a href="galeria.html" class="nav-link">Galeria</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>💌 Mensagens para Clarisse</h1>
+            <p class="subtitle">Mensagens doces e inspiradoras especialmente para você</p>
+        </header>
+
+        <div class="message-container">
+            <div class="message-display" id="messageDisplay">
+                <div class="message-content">
+                    <div class="message-icon">💕</div>
+                    <p id="messageText">Carregando mensagens fofas... 💕</p>
+                    <div class="message-decoration"></div>
+                </div>
+            </div>
+
+            <div class="navigation-container">
+                <button id="prevButton" class="nav-button">
+                    <span class="button-icon">←</span> 
+                    <span class="button-text">Anterior</span>
+                </button>
+                <div class="middle-controls">
+                    <button id="randomButton" class="random-button" title="Mensagem Aleatória">
+                        <span>🎲</span>
+                    </button>
+                    <div class="counter">
+                        <span id="currentIndex">1</span> / <span id="totalMessages">1000+</span>
+                    </div>
+                    <button id="favoriteButton" class="favorite-button" title="Favoritar">
+                        <span>⭐</span>
+                    </button>
+                </div>
+                <button id="nextButton" class="nav-button">
+                    <span class="button-text">Próxima</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="floating-particles" id="floatingParticles"></div>
+    </div>
+
+    <script src="background.js"></script>
+    <script src="messages.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

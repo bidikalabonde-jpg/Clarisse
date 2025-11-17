@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Clarisse 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="bg-image bg-1"></div>
+        <div class="bg-image bg-2"></div>
+        <div class="bg-image bg-3"></div>
+        <div class="overlay"></div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">💕 Clarisse</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="favoritos.html" class="nav-link">Favoritos</a>
+                <a href="galeria.html" class="nav-link active">Galeria</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-container">
+            <header class="page-header">
+                <h1>📸 Galeria de Clarisse</h1>
+                <p class="subtitle">Fotos especiais que decoram este site</p>
+            </header>
+
+            <div class="gallery-container">
+                <div class="gallery-controls">
+                    <button class="add-image-btn" onclick="document.getElementById('imageInput').click()">
+                        <span>➕</span> Adicionar Imagem ao Fundo
+                    </button>
+                    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;" onchange="handleImageUpload(event)">
+                    <button class="add-url-btn" onclick="showUrlInput()">
+                        <span>🔗</span> Adicionar por URL
+                    </button>
+                </div>
+
+                <div id="urlInputContainer" class="url-input-container" style="display: none;">
+                    <input type="text" id="imageUrl" placeholder="Cole a URL da imagem aqui..." class="url-input">
+                    <button onclick="addImageFromUrl()" class="url-submit-btn">Adicionar</button>
+                    <button onclick="hideUrlInput()" class="url-cancel-btn">Cancelar</button>
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Imagens serão carregadas dinamicamente -->
+                </div>
+
+                <div class="gallery-info">
+                    <p>💕 Estas fotos fazem parte do fundo especial do site, criando uma atmosfera única e personalizada para Clarisse 💕</p>
+                    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">💡 Dica: Adicione suas próprias imagens para personalizar ainda mais o fundo do site!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-particles" id="floatingParticles"></div>
+    <script src="background.js"></script>
+    <script>
+        // Usa a função do background.js ou cria uma local
+        function getBackgroundImages() {
+            if (typeof loadBackgroundImages === 'function') {
+                return loadBackgroundImages();
+            }
+            // Fallback local
+            const saved = localStorage.getItem('backgroundImages');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    return defaultBackgroundImages || [
+                        { url: '1.png', name: 'Foto Especial #1' },
+                        { url: 'Screenshot_1.png', name: 'Foto Especial #2' },
+                        { url: 'Screenshot_2.png', name: 'Foto Especial #3' }
+                    ];
+                }
+            }
+            return defaultBackgroundImages || [
+                { url: '1.png', name: 'Foto Especial #1' },
+                { url: 'Screenshot_1.png', name: 'Foto Especial #2' },
+                { url: 'Screenshot_2.png', name: 'Foto Especial #3' }
+            ];
+        }
+
+        // Salva imagens no localStorage
+        function saveBackgroundImages(images) {
+            localStorage.setItem('backgroundImages', JSON.stringify(images));
+            updateBackgroundImages();
+        }
+
+        // Atualiza as imagens de fundo em todas as páginas
+        function updateBackgroundImages() {
+            // Aplica imediatamente na página atual
+            if (typeof applyBackgroundImages === 'function') {
+                applyBackgroundImages();
+            }
+        }
+
+        // Carrega e exibe a galeria
+        function loadGallery() {
+            const images = getBackgroundImages();
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+
+            images.forEach((img, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <div class="gallery-image" style="background-image: url('${img.url}')"></div>
+                    <div class="gallery-overlay">
+                        <h3>${img.name || `Foto #${index + 1}`}</h3>
+                        <p>${img.description || 'Imagem do fundo do site'}</p>
+                        <div class="gallery-actions">
+                            <button class="gallery-btn use-bg-btn" onclick="useAsBackground(${index})" title="Usar no fundo">
+                                🎨 Usar no Fundo
+                            </button>
+                            <button class="gallery-btn remove-btn" onclick="removeImage(${index})" title="Remover">
+                                🗑️ Remover
+                            </button>
+                        </div>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+        }
+
+        // Adiciona imagem do upload
+        function handleImageUpload(event) {
+            const files = event.target.files;
+            const images = getBackgroundImages();
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newImage = {
+                        url: e.target.result,
+                        name: file.name,
+                        description: 'Imagem adicionada por você',
+                        isBase64: true
+                    };
+                    images.push(newImage);
+                    saveBackgroundImages(images);
+                    loadGallery();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Mostra input de URL
+        function showUrlInput() {
+            document.getElementById('urlInputContainer').style.display = 'flex';
+            document.getElementById('imageUrl').focus();
+        }
+
+        // Esconde input de URL
+        function hideUrlInput() {
+            document.getElementById('urlInputContainer').style.display = 'none';
+            document.getElementById('imageUrl').value = '';
+        }
+
+        // Adiciona imagem por URL
+        function addImageFromUrl() {
+            const url = document.getElementById('imageUrl').value.trim();
+            if (!url) {
+                alert('Por favor, insira uma URL válida!');
+                return;
+            }
+
+            const images = getBackgroundImages();
+            const newImage = {
+                url: url,
+                name: 'Imagem da Web',
+                description: 'Imagem adicionada por URL',
+                isBase64: false
+            };
+            images.push(newImage);
+            saveBackgroundImages(images);
+            loadGallery();
+            hideUrlInput();
+        }
+
+        // Remove imagem
+        function removeImage(index) {
+            if (confirm('Tem certeza que deseja remover esta imagem?')) {
+                const images = getBackgroundImages();
+                images.splice(index, 1);
+                saveBackgroundImages(images);
+                loadGallery();
+            }
+        }
+
+        // Usa imagem como fundo
+        function useAsBackground(index) {
+            const images = getBackgroundImages();
+            const selectedImage = images[index];
+            // Move a imagem para o início
+            images.splice(index, 1);
+            images.unshift(selectedImage);
+            saveBackgroundImages(images);
+            loadGallery();
+            alert('Imagem definida como fundo principal! Recarregue a página para ver a mudança.');
+        }
+
+        // Cria partículas flutuantes
+        function createFloatingParticles() {
+            const floatingParticles = document.getElementById('floatingParticles');
+            const emojis = ['💕', '✨', '🌸', '💖', '⭐', '🌟', '💫', '🦄', '💐', '🎀'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                    floatingParticles.appendChild(particle);
+                }, i * 1000);
+            }
+        }
+
+        // Inicializa
+        loadGallery();
+        createFloatingParticles();
+    </script>
+</body>
+</html>
+
