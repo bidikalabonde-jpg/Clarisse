@@ -1,320 +1,160 @@
+// menssagen.js
 
-# Código JavaScript refatorado e melhorado
-codigo_javascript = """
-// Array com mensagens fofas para Clarisse (mais de 1000)
-const messages = [
-    "Clarisse, você é incrível! ✨",
-    "Clarisse, seu sorriso ilumina meu dia! ☀️",
-    "Clarisse, você tem um coração de ouro! 💛",
-    "Clarisse, você é especial demais! 💕",
-    "Clarisse, seu jeito único me encanta! 🌸",
-    "Clarisse, você faz tudo ficar melhor! 💖",
-    "Clarisse, sua presença é um presente! 🎁",
-    "Clarisse, você é pura luz! ✨",
-    "Clarisse, seu carinho aquece meu coração! 🔥",
-    "Clarisse, você é simplesmente perfeita! 💝",
-];
+function gerarMensagensParaClarisse() {
+    const mensagens = [];
 
-// Função para gerar mais mensagens fofas com sentido gramatical correto
-function generateMessages() {
-    // Adjetivos no FEMININO
-    const adjectives = [
-        "incrível", "especial", "única", "perfeita", "adorável", "doce", "gentil",
-        "amorosa", "carinhosa", "brilhante", "maravilhosa", "extraordinária", "fantástica",
-        "encantadora", "divina", "preciosa", "querida", "fofa", "linda",
-        "bela", "radiante", "iluminada", "mágica", "inspiradora", "motivadora",
-        "corajosa", "determinada", "persistente", "otimista", "alegre", "feliz",
-        "grata", "generosa", "compassiva", "empática", "sincera", "autêntica", "genuína",
-        "sensível", "doce", "gentil", "meiga", "terna", "graciosa", "elegante",
-        "luminosa", "vivaz", "sensacional", "encantada", "abençoada", "sagrada"
+    // =================================================================
+    // PARTE 1: 50 Mensagens Especiais (feitas à mão, alto impacto)
+    // =================================================================
+    const especiais = [
+        "Clarisse, você é a poesia mais linda que a vida já escreveu. 📖✨",
+        "Clarisse, sua existência é a prova de que milagres acontecem. 🌟",
+        "Clarisse, não há nada no mundo que brilhe mais que sua alma. 💫",
+        "Clarisse, você é o meu 'para sempre' favorito. 💖",
+        "Clarisse, sua risada é a trilha sonora dos meus melhores dias. 🎶",
+        "Clarisse, o mundo fica mais colorido quando você chega. 🌈",
+        "Clarisse, você tem o dom de curar com um simples olhar. 🩹❤️",
+        "Clarisse, sua bondade é um farol em meio à tempestade. ⚓",
+        "Clarisse, amar você é a coisa mais fácil que já fiz. 💕",
+        "Clarisse, você é a definição de tudo que é belo e puro. 🌸",
+        "Clarisse, sua energia renova minhas forças todos os dias. 🔋✨",
+        "Clarisse, você é a calmaria que eu sempre busquei. 🌊",
+        "Clarisse, cada detalhe seu é uma obra de arte. 🎨",
+        "Clarisse, você é a resposta para orações que nem fiz. 🙏",
+        "Clarisse, sua luz não ofusca, ela ilumina e acolhe. 🕯️",
+        "Clarisse, você é a minha notificação favorita. 📱💓",
+        "Clarisse, sua presença transforma lugares comuns em paraísos. 🏝️",
+        "Clarisse, você é doce como a brisa da primavera. 🍃",
+        "Clarisse, ter você por perto é ter sorte no amor e no jogo da vida. 🍀",
+        "Clarisse, sua inteligência e sua beleza competem para ver quem brilha mais. 🧠✨",
+        "Clarisse, você é rara, única e insubstituível. 💎",
+        "Clarisse, sua voz acalma até meus pensamentos mais agitados. 🧘‍♀️",
+        "Clarisse, você é o sol que derrete qualquer gelo no coração. ☀️",
+        "Clarisse, sua empatia é um superpoder que muda o mundo. 🦸‍♀️",
+        "Clarisse, você merece o universo inteiro e mais um pouco. 🪐",
+        "Clarisse, sua delicadeza é a sua maior força. 🌹",
+        "Clarisse, você é a inspiração por trás dos meus melhores sorrisos. 😄",
+        "Clarisse, não existem palavras no dicionário para descrever você. 📚",
+        "Clarisse, você é a flor mais radiante de qualquer jardim. 🌻",
+        "Clarisse, sua companhia é o melhor presente que o tempo me deu. ⏰🎁",
+        "Clarisse, você é sinônimo de amor e perfeição. 💖",
+        "Clarisse, sua essência é inconfundível e inesquecível. 🌺",
+        "Clarisse, você é a paz em meio ao caos. 🏳️",
+        "Clarisse, sua felicidade é o meu objetivo diário. 🎯",
+        "Clarisse, você é mar, céu e terra; meu mundo todo. 🌍",
+        "Clarisse, sua intuição nunca falha, assim como sua beleza. 🔮",
+        "Clarisse, você é a protagonista da sua própria história linda. 🎬",
+        "Clarisse, sua determinação move montanhas. 🏔️",
+        "Clarisse, você é luz estelar em forma humana. ✨",
+        "Clarisse, seu abraço é o único lugar onde o tempo para. ⏳",
+        "Clarisse, você é a rainha do seu próprio destino. 👑",
+        "Clarisse, sua elegância vem de dentro para fora. 💅",
+        "Clarisse, você é o sonho mais bonito que virou realidade. 💤✨",
+        "Clarisse, sua gratidão pela vida é contagiante. 🙌",
+        "Clarisse, você é uma fortaleza envolta em flores. 🏰🌸",
+        "Clarisse, sua sabedoria ilumina caminhos escuros. 💡",
+        "Clarisse, você é a música favorita que nunca canso de ouvir. 🎧",
+        "Clarisse, sua autenticidade é o que te faz tão especial. 🔑",
+        "Clarisse, você é amor da cabeça aos pés. ❤️",
+        "Clarisse, simplesmente obrigado por existir. 🙏💖"
     ];
 
-    // Substantivos femininos relacionados a qualidades
-    const nouns = [
-        "sorriso", "coração", "jeito", "presença", "carinho", "amor", "alma",
-        "energia", "vibração", "essência", "espírito", "luz", "brilho", "calor",
-        "abraço", "olhar", "voz", "toque", "gesto", "palavra", "ação", "atitude",
-        "personalidade", "caráter", "bondade", "generosidade", "gentileza", "doçura",
-        "ternura", "sensibilidade", "empatia", "compreensão", "paciência", "sabedoria",
-        "beleza", "graça", "elegância", "encanto", "magia", "inspiração", "força"
+    mensagens.push(...especiais);
+
+    // =================================================================
+    // PARTE 2: O GERADOR GRAMATICAL (Para chegar a 1200)
+    // =================================================================
+    
+    // Listas de VOCABULÁRIO FEMININO PROJETADAS PARA CONCORDÂNCIA
+    const adjetivosFemininos = [
+        "maravilhosa", "incrível", "esplêndida", "radiante", "única", "perfeita", 
+        "doce", "gentil", "amorosa", "carinhosa", "brilhante", "extraordinária", 
+        "fantástica", "encantadora", "divina", "preciosa", "amada", "linda", 
+        "iluminada", "mágica", "inspiradora", "poderosa", "forte", "corajosa", 
+        "determinada", "otimista", "alegre", "feliz", "grata", "generosa", 
+        "sincera", "autêntica", "genuína", "inesquecível", "bela", "formosa", 
+        "deslumbrante", "magnífica", "gloriosa", "afetuosa", "cativante", "fascinante"
     ];
 
-    // Verbos no FEMININO (concordância com Clarisse)
-    const verbs = [
-        "ilumina", "aquece", "encanta", "toca", "inspira", "motiva", "alegra",
-        "faz feliz", "conforta", "acalma", "energiza", "renova", "transforma",
-        "eleva", "fortalece", "cura", "revigora", "anima", "emociona",
-        "comove", "surpreende", "fascina", "cativa", "conquista", "brilha",
-        "aquece", "acalenta", "traz paz", "traz alegria", "transforma vidas"
+    // Substantivos que aceitam "SUA" ou "A"
+    const caracteristicasFemininas = [
+        "alma", "luz", "energia", "beleza", "bondade", "ternura", "presença", 
+        "essência", "voz", "risada", "atitude", "personalidade", "inteligência", 
+        "sabedoria", "criatividade", "dedicação", "paixão", "força", "coragem", 
+        "delicadeza", "elegância", "aura", "vibração", "amizade", "companhia", 
+        "vida", "natureza", "história", "jornada", "emoção", "doçura", 
+        "vitória", "esperança", "fé"
+    ];
+
+    // Verbos para conectar
+    const verbos = [
+        "ilumina tudo", "encanta a todos", "faz o dia melhor", "traz paz", 
+        "inspira amor", "transforma o mundo", "aquece o coração", "é pura magia", 
+        "é um presente", "brilha como sol", "é inesquecível", "marca a vida", 
+        "é poesia pura", "merece o mundo", "é um exemplo", "irradia alegria", 
+        "contagia com o bem", "floresce a cada dia", "é puro carinho"
     ];
 
     const emojis = [
-        "💕", "💖", "💗", "💝", "💞", "💓", "💘", "💟", "🌸", "🌺", "🌷",
-        "🌹", "🌻", "🌼", "✨", "⭐", "🌟", "💫", "🦄", "🐰", "🐱", "🐶",
-        "🐻", "🐼", "💐", "🎀", "🎁", "🎂", "🍰", "🧁", "🍭", "🍬", "🍫",
-        "🍪", "🍩", "🥰", "😊", "😍", "🥺", "😘", "😗", "😙", "😚", "☺️",
-        "🤗", "🤩", "😻", "💋", "🌙", "☀️", "🌈", "🦋", "👑", "💎", "❤️"
+        "💕", "💖", "💗", "💝", "💞", "💓", "💘", "🌸", "🌺", "🌷", 
+        "🌹", "🌻", "🌼", "✨", "⭐", "🌟", "💫", "🦄", "🦋", "🥰", 
+        "😊", "😍", "😘", "🤗", "🤩", "❤️", "🧡", "💛", "💚", "💙", "💜"
     ];
 
-    const generated = [];
-    
-    // ====== MENSAGENS DIRETAS PERSONALIZADAS ======
-    const directMessages = [
-        // Sobre sua essência
-        "Clarisse, você é incrível do jeito que é! ✨",
-        "Clarisse, sua essência é pura magia! 🌟",
-        "Clarisse, você brilha como uma estrela! ⭐",
-        "Clarisse, sua luz é contagiante! 💫",
-        "Clarisse, você é uma bênção! 🙏",
-        
-        // Sobre seu coração
-        "Clarisse, seu coração é de ouro! 💛",
-        "Clarisse, seu coração é gigante e amoroso! 💖",
-        "Clarisse, seu coração aquece almas! 🔥",
-        "Clarisse, seu coração é puro e verdadeiro! 💕",
-        "Clarisse, seu coração é um jardim de flores! 🌺",
-        
-        // Sobre seu sorriso
-        "Clarisse, seu sorriso ilumina meu dia! ☀️",
-        "Clarisse, seu sorriso é contagiante! 😄",
-        "Clarisse, seu sorriso é o sol! ☀️",
-        "Clarisse, seu sorriso me faz feliz! 😊",
-        "Clarisse, seu sorriso é irresistível! 💕",
-        
-        // Sobre sua presença
-        "Clarisse, sua presença é um presente! 🎁",
-        "Clarisse, sua presença me traz paz! 🕊️",
-        "Clarisse, sua presença é reconfortante! 🤗",
-        "Clarisse, sua presença aquece meu coração! 🔥",
-        "Clarisse, sua presença é abençoada! ✨",
-        
-        // Sobre seu jeito
-        "Clarisse, seu jeito único me encanta! 🌸",
-        "Clarisse, seu jeito doce toca corações! 💝",
-        "Clarisse, seu jeito é simplesmente adorável! 🥰",
-        "Clarisse, seu jeito gentil é inspirador! 🌟",
-        "Clarisse, seu jeito único é seu superpoder! 🦄",
-        
-        // Sobre seu amor
-        "Clarisse, seu carinho aquece meu coração! 🔥",
-        "Clarisse, seu carinho é incondicional! 💕",
-        "Clarisse, seu carinho é inesquecível! 💗",
-        "Clarisse, seu carinho é como um abraço quente! 🤗",
-        "Clarisse, seu amor transforma vidas! 💖",
-        
-        // Sobre seus impactos
-        "Clarisse, você faz tudo ficar melhor! 💖",
-        "Clarisse, você faz a diferença! 💫",
-        "Clarisse, você faz o mundo melhor! 🌍",
-        "Clarisse, você espalha felicidade por onde passa! 🎉",
-        "Clarisse, você espalha amor e luz! ✨",
-        
-        // Sobre seu valor
-        "Clarisse, você é simplesmente perfeita! 💝",
-        "Clarisse, você é perfeita do jeito que é! 💯",
-        "Clarisse, você é uma joia rara! 💎",
-        "Clarisse, você é uma estrela brilhante! ⭐",
-        "Clarisse, você é uma obra de arte! 🎨",
-        
-        // Sobre seu potencial
-        "Clarisse, você é mais forte do que imagina! 💪",
-        "Clarisse, você é corajosa e inspiradora! 🦁",
-        "Clarisse, você merece toda a felicidade! 😊",
-        "Clarisse, seus sonhos são válidos! ✨",
-        "Clarisse, você é uma inspiração diária! 🌟",
-        
-        // Poéticas e especiais
-        "Clarisse, você é pura luz! ✨",
-        "Clarisse, você é pura magia! ✨",
-        "Clarisse, você é uma luz na escuridão! 💡",
-        "Clarisse, você é uma luz brilhante! 💫",
-        "Clarisse, você é um presente para o mundo! 🎁",
-        
-        // Mais personalizadas
-        "Clarisse, cada dia com você é especial! 🌸",
-        "Clarisse, cada momento com você é precioso! 💎",
-        "Clarisse, você merece todo o amor do mundo! 💕",
-        "Clarisse, você é amada além das palavras! 💝",
-        "Clarisse, você é amada além da compreensão! 💗",
-        
-        // Sobre sua personalidade
-        "Clarisse, sua personalidade é encantadora! 🌸",
-        "Clarisse, sua bondade é inspiradora! 🙏",
-        "Clarisse, sua generosidade toca corações! 💖",
-        "Clarisse, sua sensibilidade é uma qualidade linda! 💕",
-        "Clarisse, sua autenticidade é rara! 💎",
-        
-        // Motivacionais
-        "Clarisse, você consegue tudo que quer! 🌟",
-        "Clarisse, você é capaz de coisas incríveis! ✨",
-        "Clarisse, você brilha em tudo que faz! 💫",
-        "Clarisse, seu potencial é infinito! ♾️",
-        "Clarisse, você é extraordinária! 🌈",
-        
-        // Afetuosas
-        "Clarisse, você traz alegria por onde passa! 😊",
-        "Clarisse, você traz esperança! 🌅",
-        "Clarisse, você traz luz ao meu mundo! 💡",
-        "Clarisse, você traz paz ao meu coração! 🕊️",
-        "Clarisse, você traz felicidade garantida! 😄",
-        
-        // Finalização especial
-        "Clarisse, você é uma bênção disfarçada! 🙌",
-        "Clarisse, você é sagrada! ✨",
-        "Clarisse, você é insubstituível! 💎",
-        "Clarisse, você é irreversivelmente especial! 🌟",
-        "Clarisse, você é eternamente adorável! 💕",
+    const inicios = [
+        "saiba que", "a verdade é que", "Clarisse, eu acho que", 
+        "Clarisse, nunca esqueça que", "você prova que", "Clarisse, vejo que", 
+        "Clarisse, sinto que", "Pequeno lembrete:,", "Nota do dia: Clarisse,"
     ];
+
+    // Gerar as 1150 mensagens restantes para completar 1200
+    // Usando lógica de combinação para evitar repetição exata
     
-    generated.push(...messages);
-    generated.push(...directMessages);
+    let contador = mensagens.length;
     
-    // ====== TEMPLATES ESTRUTURADOS COM CONCORDÂNCIA CORRETA ======
-    const patterns = [
-        // Padrão: "Você é [adjetivo feminino]! [emoji]"
-        (adj, emoji) => `Clarisse, você é ${adj}! ${emoji}`,
-        
-        // Padrão: "Seu [substantivo] é [adjetivo feminino]! [emoji]"
-        (adj, noun, emoji) => `Clarisse, seu ${noun} é ${adj}! ${emoji}`,
-        
-        // Padrão: "Seu [substantivo] [verbo] meu coração! [emoji]"
-        (verb, noun, emoji) => `Clarisse, seu ${noun} ${verb} meu coração! ${emoji}`,
-        
-        // Padrão: "Você tem um [substantivo] [adjetivo feminino]! [emoji]"
-        (adj, noun, emoji) => `Clarisse, você tem um ${noun} ${adj}! ${emoji}`,
-        
-        // Padrão: "Você [verbo] com seu [substantivo]! [emoji]"
-        (verb, noun, emoji) => `Clarisse, você ${verb} com seu ${noun}! ${emoji}`,
-        
-        // Padrão: "Sua [substantivo] [verbo] tudo! [emoji]"
-        (verb, noun, emoji) => `Clarisse, sua ${noun} ${verb} tudo! ${emoji}`,
-        
-        // Padrão: "Seu [substantivo] é puro [substantivo]! [emoji]"
-        (noun1, noun2, emoji) => `Clarisse, seu ${noun1} é puro ${noun2}! ${emoji}`,
-        
-        // Padrão: "Você é [adjetivo] e [adjetivo] demais! [emoji]"
-        (adj1, adj2, emoji) => `Clarisse, você é ${adj1} e ${adj2} demais! ${emoji}`,
-        
-        // Padrão: "Seu [substantivo] é uma [substantivo]! [emoji]"
-        (noun1, noun2, emoji) => `Clarisse, seu ${noun1} é uma ${noun2}! ${emoji}`,
-        
-        // Padrão: "Você [verbo] tudo que toca! [emoji]"
-        (verb, emoji) => `Clarisse, você ${verb} tudo que toca! ${emoji}`,
-    ];
-    
-    // Gera 600 mensagens usando os padrões
-    for (let i = 0; i < 600; i++) {
-        const pattern = patterns[Math.floor(Math.random() * patterns.length)];
-        const adj1 = adjectives[Math.floor(Math.random() * adjectives.length)];
-        const adj2 = adjectives[Math.floor(Math.random() * adjectives.length)];
-        const noun1 = nouns[Math.floor(Math.random() * nouns.length)];
-        const noun2 = nouns[Math.floor(Math.random() * nouns.length)];
-        const verb = verbs[Math.floor(Math.random() * verbs.length)];
+    while (contador < 1200) {
+        const adj = adjetivosFemininos[Math.floor(Math.random() * adjetivosFemininos.length)];
+        const noun = caracteristicasFemininas[Math.floor(Math.random() * caracteristicasFemininas.length)];
+        const verb = verbos[Math.floor(Math.random() * verbos.length)];
         const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-        
-        let message;
-        
-        // Seleciona qual padrão usar
-        const patternIndex = Math.floor(Math.random() * 10);
-        
-        switch(patternIndex) {
-            case 0:
-                message = patterns[0](adj1, emoji);
-                break;
-            case 1:
-                message = patterns[1](adj1, noun1, emoji);
-                break;
-            case 2:
-                message = patterns[2](verb, noun1, emoji);
-                break;
-            case 3:
-                message = patterns[3](adj1, noun1, emoji);
-                break;
-            case 4:
-                message = patterns[4](verb, noun1, emoji);
-                break;
-            case 5:
-                message = patterns[5](verb, noun1, emoji);
-                break;
-            case 6:
-                message = patterns[6](noun1, noun2, emoji);
-                break;
-            case 7:
-                message = patterns[7](adj1, adj2, emoji);
-                break;
-            case 8:
-                message = patterns[8](noun1, noun2, emoji);
-                break;
-            case 9:
-                message = patterns[9](verb, emoji);
-                break;
+        const intro = inicios[Math.floor(Math.random() * inicios.length)];
+
+        // Sorteia um dos 4 templates gramaticais SEGUROS (sem erro de gênero)
+        const tipo = Math.floor(Math.random() * 4);
+        let msg = "";
+
+        if (tipo === 0) {
+            // Ex: Clarisse, sua alma é maravilhosa!
+            msg = `Clarisse, sua ${noun} é simplesmente ${adj}! ${emoji}`;
+        } else if (tipo === 1) {
+            // Ex: Clarisse, você é uma mulher determinada e linda!
+            msg = `Clarisse, você é uma mulher tão ${adj}! ${emoji}`;
+        } else if (tipo === 2) {
+            // Ex: Clarisse, vejo que sua beleza ilumina tudo!
+            msg = `${intro} sua ${noun} ${verb}! ${emoji}`;
+        } else {
+            // Ex: Clarisse, nenhuma beleza se compara à sua!
+            msg = `Clarisse, nenhuma ${noun} é tão ${adj} quanto a sua! ${emoji}`;
         }
-        
-        // Evita duplicatas
-        if (!generated.includes(message)) {
-            generated.push(message);
-        }
+
+        mensagens.push(msg);
+        contador++;
     }
-    
-    return generated;
+
+    // Embaralhar levemente para não ficarem as 50 primeiras sempre no topo, 
+    // se desejar misturar as manuais com as geradas.
+    // Se preferir as manuais primeiro, remova esta parte.
+    for (let i = mensagens.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [mensagens[i], mensagens[j]] = [mensagens[j], mensagens[i]];
+    }
+
+    return mensagens;
 }
 
-// Gera todas as mensagens
-const allMessages = generateMessages();
+// Gera a lista final
+const allMessages = gerarMensagensParaClarisse();
 
-// Exemplo de uso:
-console.log("Total de mensagens geradas:", allMessages.length);
-console.log("Primeiras 5 mensagens:");
-console.log(allMessages.slice(0, 5));
-console.log("\\nÚltimas 5 mensagens:");
-console.log(allMessages.slice(-5));
-
-// Função para pegar uma mensagem aleatória
-function getRandomMessage() {
-    return allMessages[Math.floor(Math.random() * allMessages.length)];
-}
-
-// Função para enviar mensagens em intervalo (exemplo)
-function sendRandomMessages(interval = 5000) {
-    setInterval(() => {
-        const message = getRandomMessage();
-        console.log(message);
-        // Aqui você pode implementar o envio via API, DOM, etc.
-    }, interval);
-}
-"""
-
-# Salva em um arquivo
-with open('/home/user/mensagens_clarisse.js', 'w', encoding='utf-8') as f:
-    f.write(codigo_javascript)
-
-print("✅ Código refatorado salvo com sucesso!")
-print("\n📋 MELHORIAS IMPLEMENTADAS:\n")
-print("1. ✨ CONCORDÂNCIA GRAMATICAL PERFEITA")
-print("   - Todos os adjetivos estão no feminino")
-print("   - Verbos concordam corretamente com Clarisse")
-print("   - Estrutura gramatical natural e fluida\n")
-
-print("2. 🎯 MENSAGENS MAIS ASSERTIVAS")
-print("   - 10 mensagens iniciais + 60 mensagens diretas personalizadas")
-print("   - Padrões estruturados que mantêm sentido")
-print("   - Total de 1000+ mensagens únicas\n")
-
-print("3. 💕 CATEGORIAS DE MENSAGENS")
-print("   - Sobre essência e espírito")
-print("   - Sobre coração e sentimentos")
-print("   - Sobre sorriso e presença")
-print("   - Sobre jeito único")
-print("   - Sobre carinho e amor")
-print("   - Sobre impactos positivos")
-print("   - Sobre valor e importância")
-print("   - Motivacionais")
-print("   - Afetuosas\n")
-
-print("4. 🔧 FUNCIONALIDADES EXTRAS")
-print("   - Função getRandomMessage() para mensagens aleatórias")
-print("   - Função sendRandomMessages() para envio em intervalo")
-print("   - Proteção contra duplicatas")
-print("   - Console.log com estatísticas\n")
-
-print("📁 Arquivo salvo em: /home/user/mensagens_clarisse.js")
+// Se você estiver rodando isso num ambiente com console, 
+// isso vai provar que tem 1200 mensagens.
+// console.log(`Total de mensagens geradas: ${allMessages.length}`);
