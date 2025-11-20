@@ -207,7 +207,6 @@ header h1 {
     letter-spacing: 0.5px;
 }
 
-
 /* Navigation container */
 .navigation-container {
     display: flex;
@@ -372,7 +371,7 @@ header h1 {
     }
 }
 
-/* Responsive */
+/* Responsive (principal) */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -981,20 +980,57 @@ header h1, header .subtitle {
     transform: scale(1.05);
 }
 
-/* Responsive para navegação */
+/* Responsive para navegação - versão enxuta no celular */
 @media (max-width: 768px) {
+    .main-nav {
+        position: static;          /* não fica mais fixo ocupando a tela toda */
+        padding: 8px 0;            /* menos altura */
+    }
+
     .nav-content {
-        flex-direction: column;
-        gap: 15px;
+        max-width: 100%;
+        padding: 0 12px;
+        flex-direction: row;       /* mantém em linha */
+        flex-wrap: wrap;           /* pode quebrar linha se precisar */
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    .nav-logo {
+        font-size: 1.2em;          /* logo menor */
     }
 
     .nav-links {
+        gap: 8px;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-end;
+    }
+
+    .nav-link {
+        padding: 4px 8px;          /* menos padding nos links */
+        font-size: 0.85em;
     }
 
     .container {
-        margin-top: 120px;
+        margin-top: 20px;          /* antes 80/120px – bem menor no mobile */
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .message-container {
+        min-height: 350px;
+    }
+
+    .message-display {
+        padding: 30px 15px;
+        min-height: 250px;
+    }
+
+    #messageText {
+        font-size: 1.3em;
     }
 
     .features-grid {
@@ -1010,5 +1046,3 @@ header h1, header .subtitle {
         grid-template-columns: 1fr;
     }
 }
-
-
